@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Route, BrowserRouter} from 'react-router-dom';
+import Auth from './components/auth'; 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Route exact path="/" component={Auth}/>
+      <Route exact path="/movies" component={App}/>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
