@@ -9,7 +9,7 @@ function MovieList(props){
     props.movieClicked(movie)
   }
 
-  const editClicked = movie => {
+  const editClicked = movie => { 
     props.editClicked(movie); 
   }
 
