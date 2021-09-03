@@ -20,8 +20,6 @@ function MovieList(props){
     API.deleteMovie(movie.id,token['mr-token'])
       .then(() => props.removeClicked(movie))
       .catch(error=> console.log())
-
-    
   }
   
   return (
