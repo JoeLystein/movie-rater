@@ -12,7 +12,7 @@ function App() {
   const [movies, setMovie] = useState([]); 
   const [selectedMovie, setSelectedMovie] = useState(null); 
   const [editedMovie, setEditedMovie] = useState(null); 
-  const [token,cdeleteToken] = useCookies(['mr-token']); 
+  const [token,deleteToken] = useCookies(['mr-token']); 
 
   useEffect(()=>{
     fetch("http://127.0.0.1:8000/api/movies/",{

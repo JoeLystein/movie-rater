@@ -26,6 +26,8 @@ function MovieForm(props){
       .catch(error => console.log(error))
     }
 
+    const isDisable = title.length === 0 || description.length === 0; 
+
     return (
         <React.Fragment>
           {props.movie ?(
@@ -39,10 +41,9 @@ function MovieForm(props){
                 onChange = { evt=> setDescription(evt.target.value)}
               ></textarea><br/>
               {props.movie.id ?
-                <button onClick={updateClicked}>Update</button> :
-                <button onClick={createClicked}>Create</button> 
+                <button onClick={updateClicked} disabled={isDisable}>Update</button> :
+                <button onClick={createClicked} disabled={isDisable}>Create</button> 
               }
-              {/* <h1>{props.movie && props.movie.title} edit</h1> */}
             </div>
           ): null}
         </React.Fragment>
