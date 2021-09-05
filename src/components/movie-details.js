@@ -5,7 +5,8 @@ import { useCookies } from 'react-cookie';
 
 function MovieDetails(props){
     const [highlighted, setHighlighted]=useState(-1);
-    const [token] = useCookies(['mr-token']); 
+    const [token] = useCookies(['mr-token']);
+     
     // const [mov, setMovie]=useState(props.movie);
 
     let mov = props.movie
