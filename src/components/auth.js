@@ -23,31 +23,32 @@ function Auth(){
     } 
     const registerCliked = ()=>{
         API.registerUser({username, password})
-            .then( resp => console.log(resp))
-            // .then( resp => loginClicked())
+            .then( resp => loginClicked())
             .catch( error => console.log(error))
     }
     return(
-        <div>
-            {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+        <div className="App">
+            <header className="App-header">
+                {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+            </header>
             
-            <label htmlFor="username">Username</label><br/>
-            <input id="username" type="text" placeholder="username" value={username}
-                onChange={ evt => setUsername(evt.target.value)}/><br/>
-            <label htmlFor="password">Password</label><br/>
-            <input id="password" type="password" placeholder="password" value={password}
-            onChange={ evt=> setPassword(evt.target.value)}/><br/>
-            {isLoginView ? 
-                <button onClick={loginClicked}>Login</button> : 
-                <button onClick={registerCliked}>Register</button>
-            }
-            {/* <button onClick={loginClicked}>Login</button> */}
-            {isLoginView ? 
-                <p onClick={()=> setIsLoginView(false)}>You don't have an account? Register here!</p> : 
-                <p onClick={()=> setIsLoginView(true)}>You already have an acount? here</p>
-            }
-            
-            
+            <div className="login-container">
+                <label htmlFor="username">Username</label><br/>
+                <input id="username" type="text" placeholder="username" value={username}
+                    onChange={ evt => setUsername(evt.target.value)}/><br/>
+                <label htmlFor="password">Password</label><br/>
+                <input id="password" type="password" placeholder="password" value={password}
+                onChange={ evt=> setPassword(evt.target.value)}/><br/>
+                {isLoginView ? 
+                    <button onClick={loginClicked}>Login</button> : 
+                    <button onClick={registerCliked}>Register</button>
+                }
+                {/* <button onClick={loginClicked}>Login</button> */}
+                {isLoginView ? 
+                    <p onClick={()=> setIsLoginView(false)}>You don't have an account? Register here!</p> : 
+                    <p onClick={()=> setIsLoginView(true)}>You already have an acount? here</p>
+                }
+            </div>
         </div>
     )
 }

@@ -22,7 +22,6 @@ function App() {
   },[])
 
   useEffect( () =>{
-    console.log(token); 
     if(!token['mr-token']) window.location.href = '/'; 
 }, [token])
 
