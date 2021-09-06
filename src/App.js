@@ -12,10 +12,10 @@ function App() {
   const [movies, setMovie] = useState([]); 
   const [selectedMovie, setSelectedMovie] = useState(null); 
   const [editedMovie, setEditedMovie] = useState(null); 
-  const [token,deleteToken] = useCookies(['mr-token']); 
+  const [token, deleteToken] = useCookies(['mr-token']); 
 
   useEffect(()=>{
-    fetch("http://127.0.0.1:8000/api/movies/",{
+      fetch("http://127.0.0.1:8000/api/movies/",{
       method:'GET', 
       headers: {
         'Content-Type': 'application/json',
@@ -24,11 +24,11 @@ function App() {
     }).then(resp => resp.json())
     .then( resp => setMovie(resp))
     .catch( error => console.log(error))
-  },[])
+  },[token])
 
   useEffect( () =>{
     if(!token['mr-token']) window.location.href = '/'; 
-  }, [token])
+  },[token])
 
   const loadMovie = movie =>{
     setSelectedMovie(movie); 
@@ -64,8 +64,8 @@ function App() {
     setMovie(newMovies); 
   }
 
-  const logoutUser = () =>{
-    deleteToken(); 
+  const logoutUser = () => {
+    deleteToken(['mr-token']); 
   }
   return (
     <div className="App">
@@ -89,9 +89,8 @@ function App() {
       
         <MovieDetails movie={selectedMovie} updateMovie={loadMovie}/>
         { editedMovie? 
-        <MovieForm movie={editedMovie} updatedMovie={updatedMovie} movieCreated={newMovie}/> 
+        <MovieForm movie={editedMovie} updatedMovie={updatedMovie} movieCreated={movieCreated}/> 
         : null}
-        {/* <MovieForm movie={editedMovie}/> */}
       </div>
     </div>
   );
